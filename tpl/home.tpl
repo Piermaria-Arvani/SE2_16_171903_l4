@@ -14,17 +14,19 @@
         <br>
         <input type = "button" id = "show" value = "Show/hide" onclick = "gestisciVisualizzazione()">
         <br><br>
-        <form id = "form" method = "GET" style ="display: none">
+        <form id = "form" method = "GET" style ="display: (: if[visualizza] ~
+                                                            [: then ~ block :]
+                                                            [: else ~ none :]:)">
 			<label for="id">ID</label>
-			<input type ="text" name ="id" id = "id" value ="(: id :)"><br>
+			<input type ="text" name ="id" id = "id" value ="(: employee ~ [: id :] :)"><br>
 			<label for="name">Name</label>
-			<input type ="text" name ="name" id = "name" value = "(: name :)" required><br>
+			<input type ="text" name ="name" id = "name" value = "(: employee ~ [: name :] :)" required><br>
 			<label for="surname" >Surname</label>
-			<input type ="text" name ="surname" id = "surname" value = "(: surname :)" required><br>
+			<input type ="text" name ="surname" id = "surname" value = "(: employee ~ [: surname :] :)" required><br>
 			<label for="level">Level</label>
-			<input type ="text" name ="level" id = "level" value = "(: level :)" required><br>
+			<input type ="text" name ="level" id = "level" value = "(: employee ~ [: level :] :)" required><br>
 			<label for="salary">Salary</label>
-			<input type ="text" name ="salary" id = "salary" value = "(: salary :)" required><br><br>
+			<input type ="text" name ="salary" id = "salary" value = "(: employee ~ [: salary :] :)" required><br><br>
 			<input type ="submit" value ="Insert Employee" name = "submit">
         </form>
 		

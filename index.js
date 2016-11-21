@@ -54,13 +54,16 @@ app.use('/', function(request, response){
     var url_parts = url.parse(request.url, true);
     var getVar = url_parts.query; //aggancio un nuovo attributo
     var e = null;
+    var show = false;
     
     if(getVar.submit == "Insert Employee"){
         e = data.insertEmployee(getEmployee(request));
+        show = true;
     }
     if(getVar.submit == "Search"){
         var id = getVar.input;
         e = data.getEmployee(id);
+        show = true;
     }
     if(getVar.submit == "Delete"){
         var id = getVar.input;
@@ -70,7 +73,7 @@ app.use('/', function(request, response){
 	
 	console.log(e);
 	//bind to template
-	bind.toFile('tpl/home.tpl', e, 
+	bind.toFile('tpl/home.tpl',{employee: e , visualizza : show}, 
 		function(d){
 			response.writeHead(200, headers);
 			response.end(d);
